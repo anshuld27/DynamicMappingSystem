@@ -4,8 +4,6 @@ using DynamicMappingSystem.Core.Exceptions;
 using DynamicMappingSystem.Core.Interfaces;
 using DynamicMappingSystem.Core.MappingProfiles;
 using DynamicMappingSystem.Core.Services;
-using System;
-using Xunit;
 
 namespace DynamicMappingSystem.Tests
 {
@@ -65,10 +63,11 @@ namespace DynamicMappingSystem.Tests
 
             // Assert
             Assert.NotNull(result);
+            Assert.NotNull(result!.RoomDetails);
             Assert.Equal("1001", result.ExternalId);
             Assert.Equal("John Doe", result.GuestFullName);
             Assert.Equal(new DateTime(2023, 10, 15), result.StartDate);
-            Assert.Equal("Suite", result.RoomDetails.RoomType);
+            Assert.Equal("Suite", result.RoomDetails!.RoomType);
             Assert.Equal(199.99m, result.RoomDetails.PricePerNight);
             Assert.Equal(4, result.RoomDetails.Capacity);
             Assert.True(result.RoomDetails.IsAvailable);
@@ -110,10 +109,11 @@ namespace DynamicMappingSystem.Tests
 
             // Assert
             Assert.NotNull(result);
+            Assert.NotNull(result!.Room);
             Assert.Equal(2002, result.Id);
             Assert.Equal("Jane Smith", result.GuestName);
             Assert.Equal(new DateTime(2023, 11, 1), result.CheckInDate);
-            Assert.Equal(roomId, result.Room.RoomId);
+            Assert.Equal(roomId, result.Room!.RoomId);
             Assert.Equal(RoomType.King, result.Room.RoomType);
             Assert.Equal(249.99m, result.Room.PricePerNight);
             Assert.Equal(2, result.Room.Capacity);
@@ -146,7 +146,7 @@ namespace DynamicMappingSystem.Tests
 
             // Assert
             Assert.NotNull(result);
-            Assert.Null(result.RoomDetails);
+            Assert.Null(result!.RoomDetails);
         }
 
         /// <summary>
@@ -214,7 +214,8 @@ namespace DynamicMappingSystem.Tests
 
             // Assert
             Assert.NotNull(result);
-            Assert.Equal(Guid.Empty, result.Room.RoomId);
+            Assert.NotNull(result!.Room);
+            Assert.Equal(Guid.Empty, result.Room!.RoomId);
         }
 
         /// <summary>

@@ -46,7 +46,7 @@ namespace DynamicMappingSystem.Core.MappingProfiles
             return new GoogleReservation
             {
                 ExternalId = source.Id.ToString(),
-                GuestFullName = source.GuestName,
+                GuestFullName = source.GuestName ?? string.Empty,
                 StartDate = source.CheckInDate,
                 EndDate = source.CheckOutDate,
                 RoomDetails = MapToGoogleRoom(source.Room)
@@ -67,7 +67,7 @@ namespace DynamicMappingSystem.Core.MappingProfiles
             return new Reservation
             {
                 Id = int.TryParse(source.ExternalId, out int id) ? id : 0,
-                GuestName = source.GuestFullName,
+                GuestName = source.GuestFullName ?? string.Empty,
                 CheckInDate = source.StartDate,
                 CheckOutDate = source.EndDate,
                 Room = MapFromGoogleRoom(source.RoomDetails)
@@ -79,7 +79,7 @@ namespace DynamicMappingSystem.Core.MappingProfiles
         /// </summary>
         /// <param name="source">The source <see cref="Room"/> object to map from.</param>
         /// <returns>A <see cref="GoogleRoom"/> object mapped from the source, or null if the source is null.</returns>
-        protected virtual GoogleRoom MapToGoogleRoom(Room source)
+        protected virtual GoogleRoom? MapToGoogleRoom(Room? source)
         {
             if (source == null)
                 return null;
@@ -91,8 +91,8 @@ namespace DynamicMappingSystem.Core.MappingProfiles
                 PricePerNight = source.PricePerNight,
                 Capacity = source.Capacity,
                 IsAvailable = source.IsAvailable,
-                Description = source.Description,
-                Amenities = source.Amenities
+                Description = source.Description ?? string.Empty,
+                Amenities = source.Amenities ?? new List<string>()
             };
         }
 
@@ -102,7 +102,7 @@ namespace DynamicMappingSystem.Core.MappingProfiles
         /// <param name="source">The source <see cref="GoogleRoom"/> object to map from.</param>
         /// <returns>A <see cref="Room"/> object mapped from the source, or null if the source is null.</returns>
         /// <exception cref="ArgumentException">Thrown if the room type is invalid.</exception>
-        protected virtual Room MapFromGoogleRoom(GoogleRoom source)
+        protected virtual Room? MapFromGoogleRoom(GoogleRoom? source)
         {
             if (source == null)
                 return null;
@@ -116,8 +116,8 @@ namespace DynamicMappingSystem.Core.MappingProfiles
                 PricePerNight = source.PricePerNight,
                 Capacity = source.Capacity,
                 IsAvailable = source.IsAvailable,
-                Description = source.Description,
-                Amenities = source.Amenities
+                Description = source.Description ?? string.Empty,
+                Amenities = source.Amenities ?? new List<string>()
             };
         }
     }

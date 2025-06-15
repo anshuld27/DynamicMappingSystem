@@ -13,7 +13,7 @@
         /// <summary>
         /// Gets or sets the full name of the guest associated with the reservation.
         /// </summary>
-        public string GuestName { get; set; }
+        public string GuestName { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the check-in date for the reservation.
@@ -28,6 +28,6 @@
         /// <summary>
         /// Gets or sets the room details associated with the reservation.
         /// </summary>
-        public Room Room { get; set; }
+        public Room Room { get; set; } = new Room();
     }
 }

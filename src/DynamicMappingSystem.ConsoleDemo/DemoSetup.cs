@@ -41,7 +41,7 @@ namespace DynamicMappingSystem.ConsoleDemo
         /// </summary>
         /// <param name="source">The source <see cref="Room"/> object to map from.</param>
         /// <returns>A <see cref="GoogleRoom"/> object mapped from the source, or null if the source is null.</returns>
-        protected override GoogleRoom MapToGoogleRoom(Room source)
+        protected override GoogleRoom? MapToGoogleRoom(Room? source)
         {
             if (source == null)
                 return null;
@@ -53,8 +53,8 @@ namespace DynamicMappingSystem.ConsoleDemo
                 PricePerNight = ConvertCurrency(source.PricePerNight, "EUR", "USD"),
                 Capacity = source.Capacity,
                 IsAvailable = source.IsAvailable,
-                Description = source.Description,
-                Amenities = source.Amenities
+                Description = source.Description ?? string.Empty,
+                Amenities = source.Amenities ?? new List<string>()
             };
         }
 
@@ -63,7 +63,7 @@ namespace DynamicMappingSystem.ConsoleDemo
         /// </summary>
         /// <param name="source">The source <see cref="GoogleRoom"/> object to map from.</param>
         /// <returns>A <see cref="Room"/> object mapped from the source, or null if the source is null.</returns>
-        protected override Room MapFromGoogleRoom(GoogleRoom source)
+        protected override Room? MapFromGoogleRoom(GoogleRoom? source)
         {
             if (source == null)
                 return null;
@@ -76,8 +76,8 @@ namespace DynamicMappingSystem.ConsoleDemo
                 PricePerNight = ConvertCurrency(source.PricePerNight, "USD", "EUR"),
                 Capacity = source.Capacity,
                 IsAvailable = source.IsAvailable,
-                Description = source.Description,
-                Amenities = source.Amenities
+                Description = source.Description ?? string.Empty,
+                Amenities = source.Amenities ?? new List<string>()
             };
         }
 

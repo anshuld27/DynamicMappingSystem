@@ -8,12 +8,12 @@
         /// <summary>
         /// Gets or sets the external identifier for the reservation.
         /// </summary>
-        public string ExternalId { get; set; }
+        public string ExternalId { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the full name of the guest associated with the reservation.
         /// </summary>
-        public string GuestFullName { get; set; }
+        public string GuestFullName { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the start date of the reservation.
@@ -28,6 +28,6 @@
         /// <summary>
         /// Gets or sets the details of the room associated with the reservation.
         /// </summary>
-        public GoogleRoom RoomDetails { get; set; }
+        public GoogleRoom RoomDetails { get; set; } = new GoogleRoom();
     }
 }

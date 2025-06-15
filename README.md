@@ -73,7 +73,8 @@ var googleReservation = mapHandler.Map( dirsReservation, "Model.Reservation", "G
 ```
 
 ## Testing
-Run the unit tests to verify the fun
+1. Navigate to the `tests/DynamicMappingSystem.Tests` directory.
+2. Run the unit tests to verify the fun
 ```bash
 dotnet test
 ```
