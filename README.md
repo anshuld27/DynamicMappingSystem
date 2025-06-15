@@ -42,7 +42,7 @@ DynamicMappingSystem/
 ### Installation
 1. Clone the repository:
 ```bash
-git clone https://github.com/your-repo/DynamicMappingSystem.git cd DynamicMappingSystem
+git clone https://github.com/anshuld27/DynamicMappingSystem.git
 ```
 2. Open the solution file `DynamicMappingSystem.sln` in Visual Studio.
 3. Restore NuGet packages:
